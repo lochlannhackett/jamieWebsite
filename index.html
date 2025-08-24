@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jamie Wong Illustration</title>
+    <style>
+        @font-face {
+            font-family: 'Font2025';
+            src: url('font2025.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Font2025', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #fef9f3;
+            overflow-x: hidden;
+        }
+
+        /* Floating Logo */
+        .floating-logo {
+            position: fixed;
+            top: 30px;
+            left: 30px;
+            z-index: 1000;
+            mix-blend-mode: multiply;
+        }
+
+        .floating-logo img {
+            width: 200px;
+            height: auto;
+            opacity: 0.9;
+            transition: transform 0.3s ease;
+        }
+
+        .floating-logo:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Main Container */
+        .main-container {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        /* Floating Navigation Buttons */
+        .floating-nav {
+            position: fixed;
+            bottom: 50px;
+            left: 50px;
+            right: 50px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 1000;
+        }
+
+        .nav-bubble {
+            font-family: 'Font2025', sans-serif;
+            background: transparent;
+            border: none;
+            padding: 0;
+            text-decoration: none;
+            color: #8b4513;
+            font-weight: normal;
+            font-size: 48px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            letter-spacing: 8px;
+        }
+
+        .nav-bubble:hover {
+            transform: translateY(-5px) scale(1.05);
+            color: #d2691e;
+        }
+
+        /* Scroll Section */
+        .art-scroll-section {
+            padding: 100px 20px;
+            background: white;
+        }
+
+        .art-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .art-piece {
+            position: relative;
+            transform: rotate(-2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .art-piece:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .art-piece:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+        }
+
+        .art-piece img {
+            width: 100%;
+            height: auto;
+            border: 10px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .art-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 20px;
+            font-family: 'Font2025', 'Courier New', monospace;
+            font-size: 14px;
+            color: #8b4513;
+            font-style: italic;
+        }
+
+        /* Decorative Elements */
+        .doodle {
+            position: absolute;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .doodle-star {
+            width: 30px;
+            height: 30px;
+            top: 20%;
+            right: 10%;
+            animation: spin 10s linear infinite;
+        }
+
+        .doodle-squiggle {
+            width: 100px;
+            height: 50px;
+            bottom: 30%;
+            left: 5%;
+            animation: wiggle 3s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes wiggle {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(20px); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .floating-logo {
+                top: 20px;
+                left: 20px;
+            }
+
+            .floating-logo img {
+                width: 150px;
+            }
+
+
+            .floating-nav {
+                left: 20px;
+                right: 20px;
+                bottom: 30px;
+            }
+
+            .nav-bubble {
+                font-size: 32px;
+                letter-spacing: 4px;
+            }
+
+            .art-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Logo -->
+    <a href="#" class="floating-logo">
+        <img src="images/IMG_7952.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHRleHQgeD0iMTAiIHk9IjQwIiBmb250LWZhbWlseT0iJ0NvdXJpZXIgTmV3JywgbW9ub3NwYWNlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOGI0NTEzIiBmb250LXdlaWdodD0iYm9sZCI+CiAgICAgICAgPHRzcGFuPmphbWllIHdvbmc8L3RzcGFuPgogICAgICAgIDx0c3BhbiB4PSIxMCIgZHk9IjMwIj5pbGx1c3RyYXRpb248L3RzcGFuPgogICAgPC90ZXh0PgogICAgPHBhdGggZD0iTTE3MCwyMCBMMTgwLDEwIE0xODAsMjAgTDE3MCwxMCIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+'; ">
+    </a>
+
+    <!-- Main Container -->
+    <div class="main-container">
+        <!-- Decorative Doodles -->
+        <svg class="doodle doodle-star" viewBox="0 0 30 30" fill="#d2691e">
+            <path d="M15,1 L18,11 L28,11 L20,17 L23,27 L15,21 L7,27 L10,17 L2,11 L12,11 Z"/>
+        </svg>
+        
+        <svg class="doodle doodle-squiggle" viewBox="0 0 100 50" fill="none" stroke="#8b4513" stroke-width="2">
+            <path d="M10,25 Q30,5 50,25 T90,25"/>
+        </svg>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="images/Untitled_Artwork.jpeg" alt="Featured Artwork" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x600/f4a460/ffffff?text=Featured+Artwork';">
+        </div>
+    </div>
+
+    <!-- Floating Navigation -->
+    <nav class="floating-nav">
+        <a href="about.html" class="nav-bubble">about</a>
+        <a href="portfolio.html" class="nav-bubble">portfolio</a>
+        <a href="shop.html" class="nav-bubble">shop</a>
+    </nav>
+
+    <!-- Scrollable Art Section -->
+    <section class="art-scroll-section">
+        <div class="art-grid">
+            <div class="art-piece">
+                <img src="images/art1.jpg" alt="Artwork 1" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/ffd700/ffffff?text=Art+1';">
+                <p class="art-caption">morning coffee thoughts</p>
+            </div>
+            <div class="art-piece">
+                <img src="images/art2.jpg" alt="Artwork 2" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/ff6347/ffffff?text=Art+2';">
+                <p class="art-caption">city dreams</p>
+            </div>
+            <div class="art-piece">
+                <img src="images/art3.jpg" alt="Artwork 3" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/98d8c8/ffffff?text=Art+3';">
+                <p class="art-caption">sunday afternoon</p>
+            </div>
+            <div class="art-piece">
+                <img src="images/art4.jpg" alt="Artwork 4" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/f0e68c/ffffff?text=Art+4';">
+                <p class="art-caption">botanical study #3</p>
+            </div>
+            <div class="art-piece">
+                <img src="images/art5.jpg" alt="Artwork 5" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/dda0dd/ffffff?text=Art+5';">
+                <p class="art-caption">midnight stories</p>
+            </div>
+            <div class="art-piece">
+                <img src="images/art6.jpg" alt="Artwork 6" onerror="this.onerror=null; this.src='https://via.placeholder.com/400x500/f0b27a/ffffff?text=Art+6';">
+                <p class="art-caption">autumn whispers</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add some playful interaction
+        document.querySelectorAll('.art-piece').forEach((piece, index) => {
+            piece.addEventListener('mouseover', () => {
+                piece.style.transform = `rotate(${Math.random() * 4 - 2}deg) scale(1.05)`;
+            });
+            
+            piece.addEventListener('mouseout', () => {
+                piece.style.transform = index % 2 === 0 ? 'rotate(2deg)' : 'rotate(-2deg)';
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const doodles = document.querySelectorAll('.doodle');
+            
+            doodles.forEach(doodle => {
+                const speed = doodle.classList.contains('doodle-star') ? 0.5 : 0.3;
+                doodle.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
