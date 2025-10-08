@@ -1,6 +1,6 @@
 # Jamie Wong Illustration
 
-A modern, responsive portfolio and e-commerce website for illustrator Jamie Wong, built to showcase artwork with a warm, artsy aesthetic while demonstrating clean front-end development practices.
+A modern, responsive portfolio and e-commerce website for the beautiful illustrator Jamie Wong, built to showcase artwork with a warm, artsy aesthetic while demonstrating clean front-end development practices.
 
 ## 🌐 Live Site
 
