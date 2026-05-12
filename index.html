@@ -12,6 +12,13 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'Acidic';
+            src: url('Acidic.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -22,291 +29,138 @@
             font-family: 'Font2025', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: white;
             overflow-x: hidden;
+            min-height: 100vh;
         }
 
-        /* Floating Logo */
-        .floating-logo {
+        /* Header */
+        .header {
             position: fixed;
-            top: 30px;
-            left: 30px;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
             z-index: 1000;
-            mix-blend-mode: multiply;
+            background-color: transparent;
         }
 
-        .floating-logo img {
-            width: 200px;
+        /* Logo */
+        .logo {
+            display: block;
+            line-height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 228px;
             height: auto;
-            opacity: 0.9;
-            transition: transform 0.3s ease;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0;
+            margin: 0;
         }
 
-        .floating-logo:hover img {
-            transform: scale(1.05);
+        .logo:hover img {
+            opacity: 1;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav a {
+            font-family: 'Acidic', sans-serif;
+            text-decoration: none;
+            color: #bc2b2d;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #888;
         }
 
         /* Main Container */
         .main-container {
-            position: relative;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
             align-items: center;
-            justify-content: flex-start;
-            padding-top: 100px;
+            min-height: 100vh;
+            padding: 40px;
         }
 
-        /* Hero Image */
-        .hero-image {
-            position: relative;
+        /* Center Image */
+        .center-image {
+            max-width: 819px;
             width: 100%;
-            z-index: -1;
         }
 
-        .hero-image img {
-            width: 100%;
-            height: auto;
-            display: block;
-            opacity: 0.9;
-        }
-
-        /* Floating Navigation Buttons */
-        .floating-nav {
-            position: fixed;
-            bottom: 50px;
-            left: 50px;
-            right: 50px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1000;
-        }
-
-        .nav-bubble {
-            font-family: 'Font2025', sans-serif;
-            background: transparent;
-            border: none;
-            padding: 0;
-            text-decoration: none;
-            color: #8b4513;
-            font-weight: normal;
-            font-size: 48px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 8px;
-        }
-
-        .nav-bubble:hover {
-            transform: translateY(-5px) scale(1.05);
-            color: #d2691e;
-        }
-
-        /* Scroll Section */
-        .art-scroll-section {
-            padding: 100px 20px;
-            background: white;
-        }
-
-        .art-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 60px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .art-piece {
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .art-piece:hover {
-            transform: scale(1.05);
-            z-index: 10;
-        }
-
-        .art-piece img {
+        .center-image img {
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        /* Decorative Elements */
-        .doodle {
-            position: absolute;
-            opacity: 0.3;
-            pointer-events: none;
-        }
-
-        .doodle-star {
-            width: 30px;
-            height: 30px;
-            top: 20%;
-            right: 10%;
-            animation: spin 10s linear infinite;
-        }
-
-        .doodle-squiggle {
-            width: 100px;
-            height: 50px;
-            bottom: 30%;
-            left: 5%;
-            animation: wiggle 3s ease-in-out infinite;
-        }
-
-        @keyframes spin {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(20px); }
-        }
-
-        /* Footer Contact Bar */
-        .contact-footer {
-            background: white;
-            border-top: 2px solid #d2691e;
-            padding: 60px 20px 100px;
-            text-align: center;
-        }
-
-        .contact-footer img {
-            width: 450px;
-            height: auto;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
-
-        .contact-footer p {
-            font-family: 'Font2025', sans-serif;
-            color: #8b4513;
-            font-size: 28px;
-            line-height: 1.8;
-        }
-
-        .contact-footer a {
-            color: #d2691e;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-footer a:hover {
-            color: #8b4513;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .floating-logo {
-                top: 20px;
-                left: 20px;
+            .header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .floating-logo img {
-                width: 150px;
+            .logo img {
+                width: 140px;
             }
 
-
-            .floating-nav {
-                left: 20px;
-                right: 20px;
-                bottom: 30px;
+            .top-nav {
+                gap: 20px;
+                flex-wrap: wrap;
+                padding-top: 0;
             }
 
-            .nav-bubble {
-                font-size: 32px;
-                letter-spacing: 4px;
+            .top-nav a {
+                font-size: 12px;
+                letter-spacing: 1px;
             }
 
-            .art-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
+            .main-container {
+                padding: 180px 20px 40px;
+            }
+
+            .center-image {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Logo -->
-    <a href="#" class="floating-logo">
-        <img src="images/IMG_7952.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHRleHQgeD0iMTAiIHk9IjQwIiBmb250LWZhbWlseT0iJ0NvdXJpZXIgTmV3JywgbW9ub3NwYWNlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOGI0NTEzIiBmb250LXdlaWdodD0iYm9sZCI+CiAgICAgICAgPHRzcGFuPmphbWllIHdvbmc8L3RzcGFuPgogICAgICAgIDx0c3BhbiB4PSIxMCIgZHk9IjMwIj5pbGx1c3RyYXRpb248L3RzcGFuPgogICAgPC90ZXh0PgogICAgPHBhdGggZD0iTTE3MCwyMCBMMTgwLDEwIE0xODAsMjAgTDE3MCwxMCIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+'; ">
-    </a>
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/see_through_title.PNG" alt="Jamie">
+        </a>
+        <nav class="top-nav">
+            <a href="about.html">about</a>
+            <a href="works.html">works</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
 
-    <!-- Main Container -->
+    <!-- Main Container with Center Image -->
     <div class="main-container">
-        <!-- Decorative Doodles -->
-        <svg class="doodle doodle-star" viewBox="0 0 30 30" fill="#d2691e">
-            <path d="M15,1 L18,11 L28,11 L20,17 L23,27 L15,21 L7,27 L10,17 L2,11 L12,11 Z"/>
-        </svg>
-        
-        <svg class="doodle doodle-squiggle" viewBox="0 0 100 50" fill="none" stroke="#8b4513" stroke-width="2">
-            <path d="M10,25 Q30,5 50,25 T90,25"/>
-        </svg>
-
-        <!-- Hero Image -->
-        <div class="hero-image">
-            <img src="images/Title page.png" alt="Featured Artwork" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x600/f4a460/ffffff?text=Featured+Artwork';">
+        <div class="center-image">
+            <img src="images/main_page_center_image.JPG" alt="Jamie Wong Illustration">
         </div>
     </div>
-
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <a href="about.html" class="nav-bubble">about</a>
-        <a href="shop.html" class="nav-bubble">shop</a>
-    </nav>
-
-    <!-- Scrollable Art Section -->
-    <section class="art-scroll-section">
-        <div class="art-grid">
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_7925.JPG" alt="Artwork 1">
-            </div>
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_7237.jpg" alt="Artwork 2">
-            </div>
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_7768.JPG" alt="Artwork 3">
-            </div>
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_6209.JPG" alt="Artwork 4">
-            </div>
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_7685.JPG" alt="Artwork 5">
-            </div>
-            <div class="art-piece">
-                <img src="images/Portfolio/IMG_8014.jpg" alt="Artwork 6">
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Footer -->
-    <footer class="contact-footer">
-        <img src="images/thankyou.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cGF0aCBkPSJNMjAsMjAgTDQwLDQwIE0yMCw0MCBMNDAsMjAiIHN0cm9rZT0iI2QyNjkxZSIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPg==';">
-        <p>Please enquire at <a href="mailto:jamiewongillustration@gmail.com">jamiewongillustration@gmail.com</a><br>
-        for any enquiries, purchases or commissions.</p>
-    </footer>
-
-    <script>
-        // Add hover interaction
-        document.querySelectorAll('.art-piece').forEach((piece) => {
-            piece.addEventListener('mouseover', () => {
-                piece.style.transform = 'scale(1.05)';
-            });
-            
-            piece.addEventListener('mouseout', () => {
-                piece.style.transform = 'scale(1)';
-            });
-        });
-
-        // Parallax effect on scroll
-        window.addEventListener('scroll', () => {
-            const scrolled = window.pageYOffset;
-            const doodles = document.querySelectorAll('.doodle');
-            
-            doodles.forEach(doodle => {
-                const speed = doodle.classList.contains('doodle-star') ? 0.5 : 0.3;
-                doodle.style.transform = `translateY(${scrolled * speed}px)`;
-            });
-        });
-    </script>
 </body>
 </html>

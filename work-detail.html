@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Detail - Jamie Wong Illustration</title>
+    <style>
+        @font-face {
+            font-family: 'Acidic';
+            src: url('Acidic.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            z-index: 1000;
+            background-color: transparent;
+        }
+
+        /* Logo */
+        .logo {
+            display: block;
+            line-height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 228px;
+            height: auto;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo:hover img {
+            opacity: 1;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav a {
+            font-family: 'Acidic', sans-serif;
+            text-decoration: none;
+            color: #bc2b2d;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #888;
+        }
+
+        /* Work Detail Container */
+        .work-detail-container {
+            padding: 40px 40px 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Work Title */
+        .work-title {
+            font-family: 'Acidic', sans-serif;
+            font-size: 32px;
+            color: #bc2b2d;
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+        }
+
+        /* Carousel Container */
+        .carousel-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 40px auto;
+        }
+
+        .carousel-image {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(188, 43, 45, 0.8);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-nav:hover {
+            background-color: rgba(188, 43, 45, 1);
+        }
+
+        .carousel-nav.prev {
+            left: 20px;
+        }
+
+        .carousel-nav.next {
+            right: 20px;
+        }
+
+        .carousel-nav:disabled {
+            background-color: rgba(188, 43, 45, 0.3);
+            cursor: not-allowed;
+        }
+
+        /* Carousel Indicators */
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .indicator {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: #bc2b2d;
+        }
+
+        /* Work Description */
+        .work-description {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 30px;
+            font-size: 16px;
+            line-height: 1.8;
+            color: #333;
+            white-space: pre-line;
+            text-align: center;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-family: 'Acidic', sans-serif;
+            color: #bc2b2d;
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo img {
+                width: 180px;
+            }
+
+            .top-nav {
+                gap: 20px;
+            }
+
+            .top-nav a {
+                font-size: 12px;
+            }
+
+            .work-detail-container {
+                padding: 180px 20px 40px;
+            }
+
+            .work-title {
+                font-size: 24px;
+            }
+
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .carousel-nav.prev {
+                left: 10px;
+            }
+
+            .carousel-nav.next {
+                right: 10px;
+            }
+
+            .work-description {
+                padding: 20px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/see_through_title.PNG" alt="Jamie">
+        </a>
+        <nav class="top-nav">
+            <a href="about.html">about</a>
+            <a href="works.html">works</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
+
+    <!-- Work Detail Container -->
+    <div class="work-detail-container">
+        <div id="work-content">
+            <div class="loading">Loading work...</div>
+        </div>
+    </div>
+
+    <script src="works-loader.js"></script>
+    <script>
+        // Initialize work detail page
+        document.addEventListener('DOMContentLoaded', () => {
+            loadWorkDetail();
+        });
+
+        // Keyboard navigation for carousel
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') {
+                const prevBtn = document.querySelector('.carousel-nav.prev');
+                if (prevBtn && !prevBtn.disabled) prevBtn.click();
+            } else if (e.key === 'ArrowRight') {
+                const nextBtn = document.querySelector('.carousel-nav.next');
+                if (nextBtn && !nextBtn.disabled) nextBtn.click();
+            }
+        });
+    </script>
+</body>
+</html>

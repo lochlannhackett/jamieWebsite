@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Works - Jamie Wong Illustration</title>
+    <style>
+        @font-face {
+            font-family: 'Acidic';
+            src: url('Acidic.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: white;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
+            z-index: 1000;
+            background-color: white;
+        }
+
+        /* Logo */
+        .logo {
+            display: block;
+            line-height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 228px;
+            height: auto;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo:hover img {
+            opacity: 1;
+        }
+
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav a {
+            font-family: 'Acidic', sans-serif;
+            text-decoration: none;
+            color: #bc2b2d;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #888;
+        }
+
+        .top-nav a.active {
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .works-container {
+            padding: 120px 40px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Works Grid */
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 50px;
+            margin-top: 40px;
+        }
+
+        .work-item {
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .work-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .work-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .work-item:hover img {
+            box-shadow: 0 8px 30px rgba(188, 43, 45, 0.2);
+        }
+
+        .work-title {
+            margin-top: 15px;
+            font-family: 'Acidic', sans-serif;
+            font-size: 16px;
+            color: #bc2b2d;
+            text-align: center;
+            letter-spacing: 1px;
+        }
+
+        /* Loading State */
+        .loading {
+            text-align: center;
+            padding: 100px 20px;
+            font-family: 'Acidic', sans-serif;
+            color: #bc2b2d;
+            font-size: 18px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 10px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo img {
+                width: 180px;
+            }
+
+            .top-nav {
+                gap: 20px;
+            }
+
+            .top-nav a {
+                font-size: 12px;
+            }
+
+            .works-container {
+                padding: 180px 20px 40px;
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/see_through_title.PNG" alt="Jamie">
+        </a>
+        <nav class="top-nav">
+            <a href="about.html">about</a>
+            <a href="works.html" class="active">works</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
+
+    <!-- Works Container -->
+    <div class="works-container">
+        <div id="works-grid" class="works-grid">
+            <div class="loading">Loading works...</div>
+        </div>
+    </div>
+
+    <script src="works-loader.js"></script>
+    <script>
+        // Initialize works gallery
+        document.addEventListener('DOMContentLoaded', () => {
+            loadWorksGallery();
+        });
+    </script>
+</body>
+</html>

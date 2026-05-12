@@ -12,6 +12,13 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'Acidic';
+            src: url('Acidic.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,173 +28,143 @@
         body {
             font-family: 'Font2025', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: white;
+            overflow-x: hidden;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
         }
 
-        /* Floating Logo */
-        .floating-logo {
+        /* Header */
+        .header {
             position: fixed;
-            top: 30px;
-            left: 30px;
+            top: 0;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
             z-index: 1000;
-            mix-blend-mode: multiply;
+            background-color: transparent;
         }
 
-        .floating-logo img {
-            width: 200px;
+        /* Logo */
+        .logo {
+            display: block;
+            line-height: 0;
+            padding: 0;
+            margin: 0;
+        }
+
+        .logo img {
+            width: 228px;
             height: auto;
-            opacity: 0.9;
-            transition: transform 0.3s ease;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0;
+            margin: 0;
         }
 
-        .floating-logo:hover img {
-            transform: scale(1.05);
+        .logo:hover img {
+            opacity: 1;
         }
 
-        /* Main Content */
-        .about-container {
-            flex: 1;
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav a {
+            font-family: 'Acidic', sans-serif;
+            text-decoration: none;
+            color: #bc2b2d;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
+            transition: color 0.3s ease;
+        }
+
+        .top-nav a:hover {
+            color: #888;
+        }
+
+        .top-nav a.active {
+            font-weight: bold;
+        }
+
+        /* Main Container */
+        .main-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 100px 0;
-            margin-bottom: 150px;
+            min-height: 100vh;
+            padding: 40px;
         }
 
-        .about-image {
+        /* Center Image */
+        .center-image {
+            max-width: 819px;
             width: 100%;
-            height: auto;
         }
 
-        .about-image img {
+        .center-image img {
             width: 100%;
             height: auto;
             display: block;
         }
 
-        /* Floating Navigation */
-        .floating-nav {
-            position: fixed;
-            bottom: 50px;
-            left: 50px;
-            right: 50px;
-            display: flex;
-            justify-content: space-between;
-            z-index: 1000;
-        }
-
-        .nav-bubble {
-            font-family: 'Font2025', sans-serif;
-            background: transparent;
-            border: none;
-            padding: 0;
-            text-decoration: none;
-            color: #8b4513;
-            font-weight: normal;
-            font-size: 48px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 8px;
-        }
-
-        .nav-bubble:hover {
-            transform: translateY(-5px) scale(1.05);
-            color: #d2691e;
-        }
-
-        .nav-bubble.active {
-            color: #d2691e;
-        }
-
-        /* Contact Footer */
-        .contact-footer {
-            background: white;
-            border-top: 2px solid #d2691e;
-            padding: 60px 20px 100px;
-            text-align: center;
-        }
-
-        .contact-footer img {
-            width: 450px;
-            height: auto;
-            margin-bottom: 30px;
-            opacity: 0.8;
-        }
-
-        .contact-footer p {
-            font-family: 'Font2025', sans-serif;
-            color: #8b4513;
-            font-size: 28px;
-            line-height: 1.8;
-        }
-
-        .contact-footer a {
-            color: #d2691e;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .contact-footer a:hover {
-            color: #8b4513;
-        }
-
         /* Responsive */
         @media (max-width: 768px) {
-            .floating-logo {
-                top: 20px;
-                left: 20px;
+            .header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .floating-logo img {
-                width: 150px;
+            .logo img {
+                width: 140px;
             }
 
-            .floating-nav {
-                left: 20px;
-                right: 20px;
-                bottom: 30px;
+            .top-nav {
+                gap: 20px;
+                flex-wrap: wrap;
+                padding-top: 0;
             }
 
-            .nav-bubble {
-                font-size: 32px;
-                letter-spacing: 4px;
+            .top-nav a {
+                font-size: 12px;
+                letter-spacing: 1px;
             }
 
-            .about-container {
-                padding: 80px 0;
-                margin-bottom: 100px;
+            .main-container {
+                padding: 180px 20px 40px;
+            }
+
+            .center-image {
+                max-width: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Logo -->
-    <a href="index.html" class="floating-logo">
-        <img src="images/IMG_7952.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHRleHQgeD0iMTAiIHk9IjQwIiBmb250LWZhbWlseT0iJ0NvdXJpZXIgTmV3JywgbW9ub3NwYWNlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOGI0NTEzIiBmb250LXdlaWdodD0iYm9sZCI+CiAgICAgICAgPHRzcGFuPmphbWllIHdvbmc8L3RzcGFuPgogICAgICAgIDx0c3BhbiB4PSIxMCIgZHk9IjMwIj5pbGx1c3RyYXRpb248L3RzcGFuPgogICAgPC90ZXh0PgogICAgPHBhdGggZD0iTTE3MCwyMCBMMTgwLDEwIE0xODAsMjAgTDE3MCwxMCIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+'; ">
-    </a>
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/see_through_title.PNG" alt="Jamie">
+        </a>
+        <nav class="top-nav">
+            <a href="about.html" class="active">about</a>
+            <a href="works.html">works</a>
+            <a href="shop.html">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
 
-    <!-- About Content -->
-    <div class="about-container">
-        <div class="about-image">
-            <img src="images/About page.jpg" alt="About Jamie Wong" onerror="this.onerror=null; this.src='https://via.placeholder.com/800x1000/f4a460/ffffff?text=About+Page';">
+    <!-- Main Container with Center Image -->
+    <div class="main-container">
+        <div class="center-image">
+            <img src="images/New_about_page.JPG" alt="About Jamie Wong">
         </div>
     </div>
-
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <a href="about.html" class="nav-bubble active">about</a>
-        <a href="index.html" class="nav-bubble">portfolio</a>
-        <a href="shop.html" class="nav-bubble">shop</a>
-    </nav>
-
-    <!-- Contact Footer -->
-    <footer class="contact-footer">
-        <img src="images/thankyou.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cGF0aCBkPSJNMjAsMjAgTDQwLDQwIE0yMCw0MCBMNDAsMjAiIHN0cm9rZT0iI2QyNjkxZSIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPg==';">
-        <p>Please enquire at <a href="mailto:jamiewongillustration@gmail.com">jamiewongillustration@gmail.com</a><br>
-        for any enquiries, purchases or commissions.</p>
-    </footer>
 </body>
 </html>
