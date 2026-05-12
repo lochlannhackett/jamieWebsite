@@ -12,6 +12,13 @@
             font-style: normal;
         }
 
+        @font-face {
+            font-family: 'Acidic';
+            src: url('Acidic.TTF') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -21,364 +28,138 @@
         body {
             font-family: 'Font2025', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             background-color: white;
+            overflow-x: hidden;
             min-height: 100vh;
         }
 
-        /* Floating Logo */
-        .floating-logo {
+        /* Header */
+        .header {
             position: fixed;
-            top: 30px;
-            left: 30px;
-            z-index: 1000;
-            mix-blend-mode: multiply;
-        }
-
-        .floating-logo img {
-            width: 200px;
-            height: auto;
-            opacity: 0.9;
-            transition: transform 0.3s ease;
-        }
-
-        .floating-logo:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Floating Navigation */
-        .floating-nav {
-            position: fixed;
-            bottom: 50px;
-            left: 50px;
-            right: 50px;
+            top: 0;
+            left: 0;
+            right: 0;
             display: flex;
             justify-content: space-between;
+            align-items: center;
+            padding: 10px 40px;
             z-index: 1000;
+            background-color: transparent;
         }
 
-        .nav-bubble {
-            font-family: 'Font2025', sans-serif;
-            background: transparent;
-            border: none;
+        /* Logo */
+        .logo {
+            display: block;
+            line-height: 0;
             padding: 0;
-            text-decoration: none;
-            color: #8b4513;
-            font-weight: normal;
-            font-size: 48px;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            letter-spacing: 8px;
+            margin: 0;
         }
 
-        .nav-bubble:hover {
-            transform: translateY(-5px) scale(1.05);
-            color: #d2691e;
-        }
-
-        .nav-bubble.active {
-            color: #d2691e;
-        }
-
-        /* Shop Header */
-        .shop-header {
-            padding: 150px 20px 80px;
-            text-align: center;
-        }
-
-        .shop-header h1 {
-            font-size: 60px;
-            color: #8b4513;
-            margin-bottom: 20px;
-            letter-spacing: 4px;
-        }
-
-        .shop-header p {
-            font-size: 20px;
-            color: #8b4513;
-            opacity: 0.8;
-        }
-
-        /* Shop Grid */
-        .shop-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px 100px;
-        }
-
-        .shop-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 60px;
-            margin-top: 60px;
-        }
-
-        .shop-item {
-            background: white;
-            border: 3px solid #d2691e;
-            border-radius: 0;
-            overflow: hidden;
-            transform: rotate(-1deg);
-            transition: all 0.3s ease;
-            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
-        }
-
-        .shop-item:nth-child(even) {
-            transform: rotate(1deg);
-        }
-
-        .shop-item:hover {
-            transform: rotate(0deg) scale(1.02);
-            box-shadow: 8px 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .shop-item-image {
-            position: relative;
-            overflow: hidden;
-            height: 400px;
-        }
-
-        .shop-item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .shop-badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: white;
-            color: #8b4513;
-            padding: 8px 20px;
-            font-size: 14px;
-            letter-spacing: 2px;
-            border: 2px solid #d2691e;
-            transform: rotate(-5deg);
-        }
-
-        .shop-item-info {
-            padding: 30px;
-            text-align: center;
-        }
-
-        .shop-item-info h3 {
-            font-size: 24px;
-            color: #8b4513;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-
-        .shop-item-type {
-            color: #8b4513;
-            opacity: 0.7;
-            margin-bottom: 8px;
-            font-size: 16px;
-        }
-
-        .shop-item-size {
-            color: #8b4513;
-            opacity: 0.6;
-            margin-bottom: 20px;
-            font-size: 14px;
-        }
-
-        .shop-item-price {
-            font-size: 28px;
-            color: #d2691e;
-            margin-bottom: 25px;
-            font-weight: bold;
-        }
-
-        .btn-enquire {
-            background: transparent;
-            color: #d2691e;
-            border: 2px solid #d2691e;
-            padding: 12px 35px;
-            font-family: 'Font2025', sans-serif;
-            font-size: 16px;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .btn-enquire:hover {
-            background: #d2691e;
-            color: white;
-            transform: translateY(-2px);
-        }
-
-        /* Contact Footer */
-        .contact-footer {
-            background: white;
-            border-top: 2px solid #d2691e;
-            padding: 60px 20px 100px;
-            text-align: center;
-            margin-top: 100px;
-        }
-
-        .contact-footer img {
-            width: 450px;
+        .logo img {
+            width: 228px;
             height: auto;
-            margin-bottom: 30px;
-            opacity: 0.8;
+            opacity: 0.85;
+            transition: opacity 0.3s ease;
+            display: block;
+            padding: 0;
+            margin: 0;
         }
 
-        .contact-footer p {
-            font-family: 'Font2025', sans-serif;
-            color: #8b4513;
-            font-size: 28px;
-            line-height: 1.8;
+        .logo:hover img {
+            opacity: 1;
         }
 
-        .contact-footer a {
-            color: #d2691e;
+        /* Top Navigation */
+        .top-nav {
+            display: flex;
+            gap: 40px;
+        }
+
+        .top-nav a {
+            font-family: 'Acidic', sans-serif;
             text-decoration: none;
+            color: #bc2b2d;
+            font-size: 14px;
+            letter-spacing: 2px;
+            text-transform: lowercase;
             transition: color 0.3s ease;
         }
 
-        .contact-footer a:hover {
-            color: #8b4513;
+        .top-nav a:hover {
+            color: #888;
         }
 
-        /* Decorative Elements */
-        .doodle {
-            position: fixed;
-            opacity: 0.2;
-            pointer-events: none;
-            z-index: 0;
+        .top-nav a.active {
+            font-weight: bold;
         }
 
-        .doodle-1 {
-            top: 20%;
-            right: 5%;
-            width: 40px;
-            height: 40px;
-            animation: float 8s ease-in-out infinite;
+        /* Main Container */
+        .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px;
         }
 
-        .doodle-2 {
-            bottom: 30%;
-            left: 3%;
-            width: 60px;
-            height: 30px;
-            animation: wiggle 4s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-        }
-
-        @keyframes wiggle {
-            0%, 100% { transform: translateX(0); }
-            50% { transform: translateX(15px); }
+        /* Coming Soon Text */
+        .coming-soon {
+            font-family: 'Acidic', sans-serif;
+            font-size: 48px;
+            color: #bc2b2d;
+            letter-spacing: 3px;
+            text-transform: lowercase;
         }
 
         /* Responsive */
         @media (max-width: 768px) {
-            .floating-logo {
-                top: 20px;
-                left: 20px;
+            .header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
             }
 
-            .floating-logo img {
-                width: 150px;
+            .logo img {
+                width: 140px;
             }
 
-            .floating-nav {
-                left: 20px;
-                right: 20px;
-                bottom: 30px;
+            .top-nav {
+                gap: 20px;
+                flex-wrap: wrap;
+                padding-top: 0;
             }
 
-            .nav-bubble {
+            .top-nav a {
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+
+            .main-container {
+                padding: 180px 20px 40px;
+            }
+
+            .coming-soon {
                 font-size: 32px;
-                letter-spacing: 4px;
-            }
-
-            .shop-header h1 {
-                font-size: 40px;
-            }
-
-            .shop-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .shop-container {
-                padding: 0 20px 80px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Floating Logo -->
-    <a href="index.html" class="floating-logo">
-        <img src="images/IMG_7952.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjgwIiB2aWV3Qm94PSIwIDAgMjAwIDgwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgogICAgPHRleHQgeD0iMTAiIHk9IjQwIiBmb250LWZhbWlseT0iJ0NvdXJpZXIgTmV3JywgbW9ub3NwYWNlIiBmb250LXNpemU9IjI0IiBmaWxsPSIjOGI0NTEzIiBmb250LXdlaWdodD0iYm9sZCI+CiAgICAgICAgPHRzcGFuPmphbWllIHdvbmc8L3RzcGFuPgogICAgICAgIDx0c3BhbiB4PSIxMCIgZHk9IjMwIj5pbGx1c3RyYXRpb248L3RzcGFuPgogICAgPC90ZXh0PgogICAgPHBhdGggZD0iTTE3MCwyMCBMMTgwLDEwIE0xODAsMjAgTDE3MCwxMCIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KPC9zdmc+'; ">
-    </a>
+    <!-- Header with Logo and Navigation -->
+    <header class="header">
+        <a href="index.html" class="logo">
+            <img src="images/see_through_title.PNG" alt="Jamie">
+        </a>
+        <nav class="top-nav">
+            <a href="about.html">about</a>
+            <a href="works.html">works</a>
+            <a href="shop.html" class="active">shop</a>
+            <a href="contact.html">contact</a>
+        </nav>
+    </header>
 
-    <!-- Decorative Doodles -->
-    <svg class="doodle doodle-1" viewBox="0 0 40 40" fill="#d2691e">
-        <circle cx="20" cy="20" r="3"/>
-        <circle cx="10" cy="10" r="2"/>
-        <circle cx="30" cy="10" r="2"/>
-        <circle cx="10" cy="30" r="2"/>
-        <circle cx="30" cy="30" r="2"/>
-    </svg>
-    
-    <svg class="doodle doodle-2" viewBox="0 0 60 30" fill="none" stroke="#8b4513" stroke-width="2">
-        <path d="M5,15 Q20,5 35,15 T55,15"/>
-    </svg>
-
-    <!-- Shop Header -->
-    <div class="shop-header">
-        <h1>shop</h1>
-        <p>coming soon</p>
+    <!-- Main Container with Coming Soon Text -->
+    <div class="main-container">
+        <div class="coming-soon">coming soon!!!!</div>
     </div>
-
-    <!-- Shop Grid -->
-    <div class="shop-container">
-        <div class="shop-grid">
-            <!-- Shop items coming soon -->
-        </div>
-    </div>
-
-    <!-- Floating Navigation -->
-    <nav class="floating-nav">
-        <a href="about.html" class="nav-bubble">about</a>
-        <a href="index.html" class="nav-bubble">portfolio</a>
-        <a href="shop.html" class="nav-bubble active">shop</a>
-    </nav>
-
-    <!-- Contact Footer -->
-    <footer class="contact-footer">
-        <img src="images/IMG_7952.png" alt="Jamie Wong Illustration" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICA8Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSIyNSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZDI2OTFlIiBzdHJva2Utd2lkdGg9IjMiLz4KICA8cGF0aCBkPSJNMjAsMjAgTDQwLDQwIE0yMCw0MCBMNDAsMjAiIHN0cm9rZT0iI2QyNjkxZSIgc3Ryb2tlLXdpZHRoPSIzIi8+Cjwvc3ZnPg==';">
-        <p>Please enquire at <a href="mailto:jamiewongillustration@gmail.com">jamiewongillustration@gmail.com</a><br>
-        for any enquiries, purchases or commissions.</p>
-    </footer>
-
-    <script>
-        // Add enquire button functionality
-        document.querySelectorAll('.btn-enquire').forEach(button => {
-            button.addEventListener('click', (e) => {
-                const item = e.target.closest('.shop-item');
-                const itemName = item.querySelector('h3').textContent;
-                const itemType = item.querySelector('.shop-item-type').textContent;
-                const itemPrice = item.querySelector('.shop-item-price').textContent;
-                
-                const subject = `Enquiry about: ${itemName}`;
-                const body = `Hi Jamie,\n\nI'm interested in "${itemName}" (${itemType}, ${itemPrice}).\n\nPlease let me know more details about this piece.\n\nBest regards,`;
-                
-                window.location.href = `mailto:jamiewongillustration@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-            });
-        });
-
-        // Add hover effects to shop items
-        document.querySelectorAll('.shop-item').forEach((item, index) => {
-            const baseRotation = index % 2 === 0 ? -1 : 1;
-            item.style.transform = `rotate(${baseRotation}deg)`;
-        });
-    </script>
 </body>
 </html>
